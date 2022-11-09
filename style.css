@@ -1,0 +1,65 @@
+body {
+    background-color: rgb(129, 221, 252);
+}
+
+.transformacion{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.titulo-1 {
+    padding: 1em 1.5em;
+    background-color: #dda0f3;
+}
+
+.transform{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    height: 80px;
+    width: 80px;
+
+    background-color: #3b0065;
+    transform: rotate(50deg);
+}
+
+.imagenPrincipal{
+    width: 100%;
+    align-items: center;
+}
+
+
+
+
+.grid {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.grid div {
+    border: solid .2em #a73bba;
+}
+
+.grid2 {
+    display: grid;
+    grid-template-columns: auto;
+}
+
+.grid2 div {
+    border: solid .2em #a73bba;
+}
+
+.grid3 {
+    display: grid;
+    grid-template-columns: auto;
+}
+
+.grid3 div {
+    border: solid .2em #a73bba;
+}
+
