@@ -88,8 +88,8 @@ let llaves = new objeto ("Llaves", 1, "Las preciosas llaves de tu habitacion")*/
 
 //ERROR = NO FUNCIONA NINGUNA DE LAS DOS OPCIONES (CONSULTAR PORQUE)
 
-const btn = document.querySelector ("button")
-btn.addEventListener("click", function uwu(){for (let i=0; i<sessionStorage.length; i+=1){
+const mochi = document.querySelector ("#mochi")
+mochi.addEventListener("click", function uwu(){for (let i=0; i<sessionStorage.length; i+=1){
     let clave =sessionStorage.key(i)
     $("inventario").innerHTML = `<p> ${clave} Valor sentimental: ${sessionStorage.getItem(clave)}</p>`
     console.log(clave + " Valor sentimental:" + sessionStorage.getItem(clave));
@@ -108,9 +108,15 @@ btn.addEventListener("click", function uwu(){for (let i=0; i<sessionStorage.leng
     menu();
 }*/
 
+const desaparecido = document.querySelector("#desaparecido")
+desaparecido.classList.remove(`oculto`)
+
+const btn = document.querySelector("#btn")
+btn.classList.add(`oculto`)
+
 
 function menu (){
-    $("pensamientos").innerHTML = `<p>1: Iniciar</p><p>2: No hacer nada</p><p>3: Escapar</p>`
+    $("pensamientos").innerHTML = `<p>Que deberia hacer?</p><p>1: Iniciar</p><p>2: No hacer nada</p><p>3: Escapar</p>`
 
 
     /*console.log ("1: Iniciar");
