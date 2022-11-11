@@ -2,6 +2,53 @@
 $("dialogos").innerHTML = `<p>¿Cual es tu nombre jugador?</p>`
 
 
+//const hablacion = document.querySelector(`#hablar`)
+const desaparecido = document.querySelector("#desaparecido")
+const btnR = document.querySelector("#btnResp")
+const txtUser = document.querySelector(`#textoUsuario`);
+
+btnR.addEventListener(`click`, formInicio)
+desaparecido.addEventListener(`click`, conversar)
+//hablacion.addEventListener(`click`, hablar)
+
+let nombre = "";
+function formInicio(e){
+    console.log(txtUser.value)
+    btnR.classList.add(`oculto`);
+    desaparecido.classList.remove(`oculto`);
+    console.log(`hola`)
+    nombre = txtUser.value
+    $("respuestas").innerHTML = `<p>me llamo ${nombre}</p>`
+    $("dialogos").innerHTML = `<p>-Bienvenido a lo raro ${nombre}</p>`
+    menu();
+
+    e.preventDefault();
+}
+
+let miValorDeseado = "";
+
+function conversar(e){
+    console.log(txtUser.value);
+    miValorDeseado = txtUser.value;
+    //desaparecido.classList.add(`oculto`);
+    //btnR.classList.add(`oculto`);
+    //hablacion.classList.remove(`oculto`);
+
+
+    e.preventDefault();
+}
+
+/*let hablando = "";
+function hablar(e){
+    console.log(txtUser.value)
+    console.log(`hablar`)
+    hablando = txtUser.value;
+    e.preventDefault();
+}*/
+
+
+
+
 
 /*const form = document.querySelector(`form`);
 let miValorDeseado = "";
@@ -14,7 +61,7 @@ form.addEventListener(`submit`, (evt) => {
 
 
 
-const form = document.querySelector(`form`);
+/*const form = document.querySelector(`form`);
 let miValorDeseado = "";
 form.addEventListener(`submit`, (evt) => {
     evt.preventDefault();
@@ -27,7 +74,7 @@ form.addEventListener(`submit`, (evt) => {
         console.log("halleluya");
     } else {
         console.log("no puedes hacer esto");
-    }*/
+    }
     let nombre = entrada.value
 
     if (nombre == ""){
@@ -43,7 +90,7 @@ form.addEventListener(`submit`, (evt) => {
         menu();
     }
     
-});
+}); */
 
 
 
@@ -108,16 +155,16 @@ mochi.addEventListener("click", function uwu(){for (let i=0; i<sessionStorage.le
     menu();
 }*/
 
-const desaparecido = document.querySelector("#desaparecido")
-desaparecido.classList.remove(`oculto`)
+// const desaparecido = document.querySelector("#desaparecido")
+//desaparecido.classList.remove(`oculto`)
 
-const btn = document.querySelector("#btn")
-btn.classList.add(`oculto`)
+//const btn = document.querySelector("#btn")
+//btn.classList.add(`oculto`)
 
 
 function menu (){
     $("pensamientos").innerHTML = `<p>Que deberia hacer?</p><p>1: Iniciar</p><p>2: No hacer nada</p><p>3: Escapar</p>`
-
+    console.log("hola" + miValorDeseado)
 
     /*console.log ("1: Iniciar");
     console.log ("2: No hacer nada");
@@ -125,7 +172,25 @@ function menu (){
 
     //let op = prompt ("Que quieres hacer?");
 
-    switch (miValorDeseado){
+
+    //CAMBIO DEL SWITCH POR IF
+    if(miValorDeseado == "1"){
+        console.log("comenzamos");
+        juego();
+    } if (miValorDeseado == "2"){
+        $("respuestas").innerHTML = `<p>(No he echo nada por un rato... que aburrido)</p>`
+        console.log ("No hacer nada");
+        menu();
+    } if (miValorDeseado == "3"){
+        huir()
+        $("respuestas").innerHTML = `<p>(Corri sin rumbo hasta morir de hambre)</p>`
+        console.log("escapar");
+    }
+
+
+//SWITCH ORIGINAL
+
+    /*switch (miValorDeseado){
         case "3":
             huir()
             $("respuestas").innerHTML = `<p>(Corri sin rumbo hasta morir de hambre)</p>`
@@ -145,9 +210,9 @@ function menu (){
             $("pensamientos").innerHTML = `<p>Por alguna razon no puedo hacerlo</p>`
 
             //console.warn ("No puedes hacer eso");
-            menu();*/
+            menu();
 
-    }
+    }*/
 }
 
 
@@ -162,7 +227,7 @@ function juego (){
     //console.log("Quien esta hablando?");
     
     //let accion = prompt("Quieres moverte?").toLowerCase();
-    $("pensamientos").innerHTML += `<p>me muevo?</p>`
+    $("pensamientos").innerHTML = `<p>me muevo?</p>`
     if (miValorDeseado == "si"){
         $("respuestas").innerHTML = `<p>(Intente moverme pero cai al intentar pararme)</p>`
 
@@ -229,9 +294,57 @@ function accion1 (){
     //console.log ("5: Salir de la habitacion");
 
     //let op = prompt ("Que quieres hacer?");
-    $("respuestas").innerHTML += `<p>(Que deberia hacer ahora?)</p>`
 
-    switch (miValorDeseado){
+
+    //CAMBIO DEL SWITCH POR IF
+    $("respuestas").innerHTML += `<p>(Que deberia hacer ahora?)</p>`
+    if(miValorDeseado == "1"){
+        $("respuesta").innerHTML = `<p>(Me aserque al espejo)</p><p>(Veo algunas cosas a mi alrededor en el)</p><h3>(Edad ${protagonista["edad"]} </h3><h3>(Valor ${protagonista["valor"]})</h3>`
+        accion1();
+    } if(miValorDeseado == "2"){
+        $("respuestas").innerHTML = `<p>(Me aserque al armario)</p>`
+        $("respuestas").innerHTML += `<h3>(Deberia entrar?)</h3>`
+
+        if (miValorDeseado == "si"){
+            $("respuestas").innerHTML = `<h3>(Ahora estoy dentro del closet)</h3>`
+        }
+        accion1();
+
+    } if(miValorDeseado == "3"){
+        $("respuestas").innerHTML = `<p>(Me aserque al escritorio, en el puedo ver una computadora y una mochila con algunos utiles escolares)</p>`
+        $("respuestas").innerHTML = `<p>(Deberia agarrar la mochila?)</p>`
+
+        if (miValorDeseado == "si"){
+            $("respuestas").innerHTML = `<p>(La agarre)</p>`
+
+            sessionStorage.setItem("lapiz", JSON.stringify({nombre: "Lapiz", valorSentimantal: "2", descripcion: "Un viejo la piz que te ha acompañado por mucho tiempo"}))
+            sessionStorage.setItem("cuaderno", JSON.stringify({nombre: "Cuaderno", valorSentimantal: "0", descripcion: "Solo un cuaderno"}))
+            sessionStorage.setItem("pase", JSON.stringify({nombre: "Pase estudiantil", valorSentimantal: "1", descripcion: "Necesario para ingresar a las instalaciones escolares"}))
+            sessionStorage.setItem("obj", JSON.stringify({nombre: "Llaves", valorSentimantal: "2", descripcion: "Las llaves de tu dormitorio"}))
+
+        }
+        accion1();
+    } if(miValorDeseado == "4"){
+        $("respuestas").innerHTML = `<p>(Me quede en la cama por un rato y me dormi otra vez...)</p>`
+        accion1();
+    } if(miValorDeseado == "5"){
+        $("respuestas").innerHTML = `<p>(Sali de la habitacion)</p>`
+
+        $("respuestas").innerHTML = `<p>(Deberia cerrar la puerta con llave?)</p>`
+
+        if (miValorDeseado == "si"){
+            let cerrar = JSON.parse(localStorage.getItem("Llaves"))
+            console.log(cerrar)
+            $("respuestas").innerHTML += `<p>(Cerre con llave y sali hacia la escuela)</p>`
+        } 
+    }
+
+
+
+
+
+//SWITCH ORIGINAL
+   /* switch (miValorDeseado){
         case "5":
             $("respuestas").innerHTML = `<p>(Sali de la habitacion)</p>`
 
@@ -253,7 +366,7 @@ function accion1 (){
                 $("pensamientos").innerHTML = `<p>-Posiblemente te roben</p>`
 
                 //document.write ("<p>-Posiblemente te roben</p>")
-            }*/
+            }
             if (miValorDeseado == "no"){
 
                 $("respuestas").innerHTML = `<p>(Quizas debi haberlo echo)</p>`
@@ -309,7 +422,7 @@ function accion1 (){
                     } else {
                     alert("<p>No puedes permanecer alli por siempre</p>");                    
                     }
-                } while (eEg != "si");*/
+                } while (eEg != "si");
             }
             accion1();
             break;
@@ -333,14 +446,7 @@ function accion1 (){
             $("pensamientos").innerHTML = `<p>Por alguna razon no puedo hacer eso</p>`
 
             //console.warn ("No puedes hacer eso");
-            accion1();*/
+            accion1();
 
-    }
+    }*/
 }
-
-
-
-
-
-
-

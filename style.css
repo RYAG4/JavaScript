@@ -66,3 +66,7 @@ body {
 .oculto{
     display: none;
 }
+
+.activo{
+    display: flex;
+}
